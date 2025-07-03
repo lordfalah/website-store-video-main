@@ -1,5 +1,3 @@
-import getBanner from "@/actions/get-banner";
-import getProducts from "@/actions/get-products";
 import { getStore } from "@/actions/get-stores";
 import Banner from "@/components/banner";
 import ProductList from "@/components/product-list";

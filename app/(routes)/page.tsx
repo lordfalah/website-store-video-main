@@ -9,7 +9,11 @@ const HomePage = async () => {
 
   return (
     <Container>
-      <BouncyCardsFeatures items={stores} />
+      {stores.length > 0 ? (
+        <BouncyCardsFeatures items={stores} />
+      ) : (
+        "data kosong"
+      )}
     </Container>
   );
 };
