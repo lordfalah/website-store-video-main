@@ -5,16 +5,24 @@ import Currency from "./ui/currency";
 import { Button } from "./ui/button";
 import { MessageCircleIcon } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 interface InfoProps {
   data: Product;
 }
 
 const Info: React.FC<InfoProps> = ({ data }) => {
-  const URL = `${window.location.origin}/product/${data.id}`;
   const telp = process.env.NEXT_PUBLIC_TELP;
-  const pesan = `Halo saya ingin membeli ${data.name} - ${data.price} dengan link: ${URL}`;
 
+  // Use state to store the URL and only set it after the component mounts
+  const [productURL, setProductURL] = useState("");
+
+  useEffect(() => {
+    // This code only runs in the browser
+    setProductURL(`${window.location.origin}/product/${data.id}`);
+  }, [data.id]); // Re-run if data.id changes
+
+  const pesan = `Halo saya ingin membeli ${data.name} - ${data.price} dengan link: ${productURL}`;
   const link = `https://wa.me/${telp}?text=${pesan}`;
 
   return (
