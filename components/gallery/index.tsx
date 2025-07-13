@@ -29,6 +29,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
                 fill
                 alt="Image"
                 className="object-cover object-center"
+                priority
               />
             </div>
           </TabPanel>
